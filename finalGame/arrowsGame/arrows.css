@@ -1,0 +1,36 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+canvas {
+  display: block;
+  margin: auto;
+}
+
+#gameCanvas {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.lead {
+  font-size: 1.25rem;
+}
+
+.display-4 {
+  font-weight: bold;
+}
+
+.score-display {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  color: #ffffff;
+  background-color: #007bff; /* Bootstrap primary color */
+  border-radius: 0.25rem;
+  display: inline-block;
+}
+
+

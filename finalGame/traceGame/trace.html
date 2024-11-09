@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" type="text/css" href="trace.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/addons/p5.sound.min.js"></script>
+
+  <title>Tracer Game</title>
+</head>
+<body class="bg-light text-center">
+
+  <!-- Navigation -->
+  <div class="container my-4">
+    <div class="d-flex justify-content-between">
+      <a href="../homeScreen/options.html" id="backBtn" class="btn btn-secondary">Back</a>
+      <button id="score" class="btn btn-primary">Score: 0</button>
+    </div>
+  </div>
+
+  <!-- Title and Instructions -->
+  <div class="container text-center my-3">
+    <h1 class="display-4">Tracer Game</h1>
+    <p class="lead">
+      <strong>How to Play:</strong> Follow the path accurately to trace the shape as it appears. Move quickly but carefully to earn the highest score!
+    </p>
+  </div>
+
+  <!-- Game Canvas -->
+  <div class="container d-flex justify-content-center">
+    <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+      <div id="gameCanvas"></div>
+    </div>
+  </div>
+
+  <script src="trace.js" defer></script>
+</body>
+</html>
