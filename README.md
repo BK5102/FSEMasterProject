@@ -25,7 +25,7 @@ This application was developed as the final project for the FSE 100 course. A to
 1. Clone the repository:
    ```bash
    git clone [<repository-url>](https://github.com/BK5102/FSEMasterProject/tree/BK5102-final)
-   cd finalGame/homeScreen/
+   cd finalGame/homeScreen
    open home.html
 
 ## Usage 
