@@ -1,89 +1,66 @@
 <!DOCTYPE html>
-<html id="bgcolor" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account</title>
 
-    <title>Create Account</title>
-
-    <link rel="stylesheet" type="text/css" href="home.css">
-
-    <script src="libraries/p5.min.js"></script>
-    <script src="libraries/p5.sound.min.js"></script>
-  </head> 
-
-  <body >
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   
-    <div class="container"> 
-      <button id="backBtn" class="button" class=".right-align-button"> 
-        <a id="linkColor" href="home.html"> Back </a>
-      </button>
-    </div>   
+  <link rel="stylesheet" type="text/css" href="home.css">
 
-    </input>
-    <h1> Create an Account</h1>
-    <center> <button id="createAccount"> Please enter the following: </button></center>
+  <!-- p5.js Libraries -->
+  <script src="libraries/p5.min.js"></script>
+  <script src="libraries/p5.sound.min.js"></script>
+</head> 
 
-    <center>
-      <form>
-          <table>
-              <tr>
-                  <td style="text-align: right;">
-                      <label id="labelID" for="exampleInputEmail1">First Name</label>
-                  </td>
-                  <td>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter first name">
-                  </td>
-              </tr>
-            
+<body class="login-bg">
 
-              <tr>
-                  <td style="text-align: right;">
-                      <label id="labelID" for="exampleInputPassword1">Last Name</label>
-                  </td>
-                  <td>
-                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter last name">
-                  </td>
-              </tr>
-  
-              <tr>
-                  <td style="text-align: right;">
-                      <label id="labelID" for="exampleInputPassword1">Email</label>
-                  </td>
-                  <td>
-                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter email">
-                  </td>
-              </tr>
+  <!-- Back Button -->
+  <div class="container my-3 text-left">
+    <a id='backBtn' href="home.html" class="btn btn-secondary">Back</a>
+  </div>   
 
-  
-              <tr>
-                  <td style="text-align: right;">
-                      <label id="labelID" for="exampleInputPassword1">Password</label>
-                  </td>
-                  <td>
-                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter password">
-                  </td>
-              </tr>
+  <!-- Title and Form Header -->
+  <div class="container text-center">
+    <h1>Create an Account</h1>
+    <p id="form-instructions">Please enter the following:</p>
+  </div>
 
-  
-              <tr>
-                  <td colspan="2" style="text-align: center;">
-                      <button id="submitBtn" type="submit" class="btn btn-primary">
-                          <a id="linkColor" href="options.html"> Enter </a>
-                      </button>
-                  </td>
-              </tr>
-          </table>
-      </form>
-  </center>
-  
-  <style>
-    body{ 
-      background-color: rgb(218, 236, 242);
-  
-    }
-  
-  </style>
+  <!-- Form Section -->
+  <div class="container">
+    <form class="account-form">
+      <div class="form-group row">
+        <label for="firstName" class="col-sm-4 col-form-label text-right">First Name</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="firstName" placeholder="Enter first name">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="lastName" class="col-sm-4 col-form-label text-right">Last Name</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="lastName" placeholder="Enter last name">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="email" class="col-sm-4 col-form-label text-right">Email</label>
+        <div class="col-sm-6">
+          <input type="email" class="form-control" id="email" placeholder="Enter email">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="password" class="col-sm-4 col-form-label text-right">Password</label>
+        <div class="col-sm-6">
+          <input type="password" class="form-control" id="password" placeholder="Enter password">
+        </div>
+      </div>
+      <div class="text-center">
+        <a href="options.html" id="submitBtn" class="btn btn-success">Enter</a>
+      </div>
+    </form>
+  </div>
 
-  </body>
-</html>
+  <!-- Bootstrap JS and dependencies (optional) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  

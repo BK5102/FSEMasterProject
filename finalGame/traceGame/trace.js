@@ -120,6 +120,7 @@ function draw(selectedShape) {
       noFill();
       strokeWeight(26);
       square(150, 150, 300);
+      incrementScore();
       endGame();
     }
   }
@@ -127,6 +128,7 @@ function draw(selectedShape) {
 
 function incrementScore() {
   score++; // Increase score by 1
+  document.getElementById("score").innerText = `Score: ${score}`;
   console.log("Score: " + score); // Display the score in the console
 }
 

@@ -6,56 +6,50 @@
 
     <title>Sign In</title>
 
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="home.css">
 
     <script src="libraries/p5.min.js"></script>
     <script src="libraries/p5.sound.min.js"></script>
+
   </head> 
 
-  <body>
-    <div class="container"> 
-        <button id="backBtn" class="button" class=".right-align-button"> 
-          <a id="linkColor" href="home.html"> Back </a>
-        </button>
+  <body class="login-bg">
+    <!-- Back Button -->
+    <div class="container my-3 text-left"> 
+        <a href="home.html" id="backBtn" class="btn btn-secondary">Back</a>
     </div>  
 
+    <!-- Sign-In Form -->
+    <div class="container text-center">
+      <h1>Welcome Back!</h1>
+      <h2>Please Sign In</h2>
+      <p>Please enter the following:</p>
 
-    <h1> Welcome Back! </h1>
-    <h2> Please Sign In </h2>
-    <center> <button id="createAccount"> Please enter the following: </button></center>
+      <!-- Form Section -->
+      <form class="text-left" style="max-width: 500px; margin: auto;">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email">
+        </div>
 
-    <center> 
-      <form>
-      
-      <div class="form-group">
-        <label id="labelID" for="exampleInputPassword1">Email</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter email">
-      </div>
+        <div class="form-group mt-3">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter password">
+        </div>
 
-      <br>
-      <br>
+        <div class="text-center">
+          <a href="options.html" id="submitBtn" class="btn btn-success">Enter</a>
+        </div>
+      </form>
+    </div>
 
-      <div class="form-group">
-        <label id="labelID" for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter password">
-      </div>
-
-      <br>
-      <br>
-
-      <button id="submitBtn" type="submit" class="btn btn-primary">
-        <a id="linkColor" href="options.html"> Enter </a>
-      </button>
-    </form>
-  </center>
-
-  <style>
-    body{ 
-      background-color: rgb(218, 236, 242);
-  
-    }
-  
-  </style>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   </body>
 </html>

@@ -24,6 +24,10 @@ let walls = [
   { x: 620, y: 420, width: 100, height: 20 },  // Horizontal wall 9 near checkpoint
 ];
 
+//score:
+let score = 0
+let scoreIncremented = false
+
 function setup() {
   createCanvas(700, 500);
   mainCharacter = loadImage('assets/Stickman (Random).png'); // Load the character image
@@ -35,7 +39,7 @@ function setup() {
 }
 
 function draw() {
-  background('yellow');
+  background(233,217,179);
 
   // Set text color to transparent
   fill(255, 0, 0, 128); // Red with 50% opacity
@@ -63,7 +67,8 @@ function draw() {
   if (d < 40) {
     fill(255); // White text for winning message
     text('You win!', 200, 300);
-    // You could add logic for next levels here
+    incrementScore()
+    // add logic for next levels here later
   }
 }
 
@@ -97,4 +102,14 @@ function checkCollisions() {
     }
   }
   return false; // No collision
+}
+
+function incrementScore() {
+  if(!scoreIncremented){
+    score++; // Increase score by 1
+    scoreIncremented = true;
+    document.getElementById("score").innerText = `Score: ${score}`;
+    console.log("Score: " + score); // Display the score in the console
+  }
+  
 }

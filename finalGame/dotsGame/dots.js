@@ -4,7 +4,7 @@ let canScore = true;
 function setup() {
   let canvas = createCanvas(400, 400);
   canvas.parent("gameCanvas"); // Place the canvas inside the #gameCanvas div
-  background(230);
+  background(233,217,179);
   textSize(25);
   stroke(0, 0, 0);
   fill(0, 0, 0);
@@ -20,7 +20,7 @@ function draw() {
   circleX = random(75, 525);
   circleY = random(75, 525);
 
-  background(230);
+  background(233,217,179);
   circleLoop(circleX, circleY);
   stroke(0, 0, 0);
   fill(0, 0, 0);
@@ -47,7 +47,7 @@ function mouseClicked() {
       stroke(180, 255, 180);
       fill(180, 255, 180);
 
-      background(230);
+      background(233,217,179);
       circle(circleX, circleY, 100);
       
       score++;
@@ -55,7 +55,7 @@ function mouseClicked() {
       text("Streak: " + score, 5, 25);
     }
   } else {
-    background(230);
+    background(233,217,179);
     stroke(255, 180, 180);
     fill(255, 180, 180);
 

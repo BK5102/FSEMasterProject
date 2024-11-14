@@ -30,52 +30,11 @@ function preload() {
 function setup() {
   let canvas = createCanvas(400, 400);
   canvas.parent("gameCanvas"); // Place the canvas inside the #gameCanvas div
-  updateScoreDisplay();
-
+  //updateScoreDisplay();
 }
-
-function updateScoreDisplay() {
-  document.getElementById("score").innerText = `Score: ${score}`;
-}
-
-function checkPlayerMovement() {
-  if (arrowHighlighted) {
-    let angle = map(selectedArrow, 0, numCircles, 0, TWO_PI);
-    let targetX = centerX + cos(angle) * radius;
-    let targetY = centerY + sin(angle) * radius;
-
-    if (!reverseDirection && dist(mouseX, mouseY, targetX, targetY) < circleRadius) {
-      // Player reached the outer circle; start returning to center
-      reverseDirection = true;
-      previousArrow = selectedArrow;
-      selectedArrow = (selectedArrow - 1 + numCircles) % numCircles; // Select the previous circle
-      greenArrowSound.play();
-    } else if (reverseDirection && dist(mouseX, mouseY, targetX, targetY) < circleRadius) {
-      // Player reached the previous circle in reverse direction
-      previousArrow = selectedArrow;
-      if (selectedArrow === 0) {
-        // Player has reached the center and completed a round
-        successSound.play();  // Play the success sound first
-        score += 1;           // Increment the score after the sound
-        updateScoreDisplay(); // Update score in the HTML
-        arrowHighlighted = false;
-        selectArrow();        // Restart game with a new arrow
-      } else {
-        selectedArrow = (selectedArrow - 1 + numCircles) % numCircles;
-        greenArrowSound.play();
-      }
-    } else if (dist(mouseX, mouseY, centerX, centerY) > centerRadius + radius) {
-      // Player moved too far from the center path; play fail sound and reset
-      failSound.play();
-      arrowHighlighted = false;
-      selectedArrow = -1;
-    }
-  }
-}
-
 
 function draw() {
-  background(181, 226, 229);
+  background(229,205,148);
 
   // Center circle
   centerX = width / 2;
@@ -172,6 +131,7 @@ function checkPlayerMovement() {
       if (selectedArrow === 0) {
         // Player has reached the center
         successSound.play();
+        updateScoreDisplay();
         arrowHighlighted = false;
         selectArrow(); // Restart game with a new arrow
       } else {
@@ -185,6 +145,12 @@ function checkPlayerMovement() {
       selectedArrow = -1;
     }
   }
+}
+
+function updateScoreDisplay() {
+  score++;
+  document.getElementById("score").innerText = `Score: ${score}`;
+  console.log("Score: " + score);
 }
 
 function mouseDragged() {

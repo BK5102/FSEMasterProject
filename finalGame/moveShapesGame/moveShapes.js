@@ -34,13 +34,16 @@ let squareColor2 = 0
 let squarePlaced = false
 
 let gameFinished = false
+let score = 0
+let scoreIncremented = false
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
-  background(50);
+  // background(50);
+  background(213,192,142);
   
   fill(100, 100, 200)
   rect(700, 0, 50, 2000)
@@ -89,11 +92,23 @@ function draw() {
     squareY = mouseY - 40
   }
 
+  function incrementScore() {
+    if(!scoreIncremented){
+      score++; // Increase score by 1
+      scoreIncremented = true;
+      document.getElementById("score").innerText = `Score: ${score}`;
+      console.log("Score: " + score); // Display the score in the console
+    }
+    
+  }
+
   if(gameFinished){
     textSize(50)
     fill(0, 250, 0)
     text("Game Complete", 100, 200)
     rect(150, 250, 250, 50)
+
+    incrementScore();
 
     textSize(25)
     fill(250)
@@ -163,6 +178,7 @@ function mouseClicked(){
   }
   else if(gameFinished && mouseX > 150 && mouseX < 400 && mouseY > 250 && mouseY < 300){
     gameFinished = false
+    scoreIncremented = false;
 
     rectPlaced = false
     trianglePlaced = false
