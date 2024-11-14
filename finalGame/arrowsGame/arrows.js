@@ -21,10 +21,10 @@ let failSound;
 let score = 0;
 
 function preload() {
-  ding = loadSound('sounds/ding-101492.mp3');
-  greenArrowSound = loadSound('sounds/tinkle4-93228.mp3'); 
-  successSound = loadSound('sounds/success-1-6297.mp3'); 
-  failSound = loadSound('sounds/game-fail-90322.mp3'); 
+  ding = loadSound('/finalGame/sounds/ding-101492.mp3');
+  greenArrowSound = loadSound('/finalGame/sounds/tinkle4-93228.mp3'); 
+  successSound = loadSound('/finalGame/sounds/success-1-6297.mp3'); 
+  failSound = loadSound('/finalGame/sounds/game-fail-90322.mp3'); 
 }
 
 function setup() {

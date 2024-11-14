@@ -37,6 +37,14 @@ let gameFinished = false
 let score = 0
 let scoreIncremented = false
 
+let successSound;
+let failSound;
+
+function preload() {
+  successSound = loadSound('/finalGame/sounds/success-1-6297.mp3'); 
+  failSound = loadSound('/finalGame/sounds/game-fail-90322.mp3'); 
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
 }
@@ -109,6 +117,7 @@ function draw() {
     rect(150, 250, 250, 50)
 
     incrementScore();
+    successSound.play();
 
     textSize(25)
     fill(250)

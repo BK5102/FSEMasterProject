@@ -12,7 +12,13 @@ let initialCheckpointX = 0;
 let initialCheckpointY = 0;
 
 let score = 0;
+let successSound;
+let failSound;
 
+function preload() {
+  successSound = loadSound('/finalGame/sounds/success-1-6297.mp3'); 
+  failSound = loadSound('/finalGame/sounds/game-fail-90322.mp3'); 
+}
 //Sets up initial canvas, including the background and central shape
 function setup() {
   createCanvas(600, 600);
@@ -73,10 +79,12 @@ function draw(selectedShape) {
   if (gameStarted == true) {
     if (mouseX < 137 || 463 < mouseX || mouseY < 137 || 463 < mouseY) {
       endGameLoss();
+      failSound.play();
     }
     if (163 < mouseY && mouseY < 437) {
       if (163 < mouseX && mouseX < 437) {
         endGameLoss();
+        failSound.play();
       }
     }
   }
@@ -121,6 +129,7 @@ function draw(selectedShape) {
       strokeWeight(26);
       square(150, 150, 300);
       incrementScore();
+      successSound.play();
       endGame();
     }
   }

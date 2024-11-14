@@ -24,9 +24,16 @@ let walls = [
   { x: 620, y: 420, width: 100, height: 20 },  // Horizontal wall 9 near checkpoint
 ];
 
-//score:
+
 let score = 0
 let scoreIncremented = false
+let successSound;
+let failSound;
+
+function preload() {
+  successSound = loadSound('/finalGame/sounds/success-1-6297.mp3'); 
+  failSound = loadSound('/finalGame/sounds/game-fail-90322.mp3'); 
+}
 
 function setup() {
   createCanvas(700, 500);
@@ -68,6 +75,7 @@ function draw() {
     fill(255); // White text for winning message
     text('You win!', 200, 300);
     incrementScore()
+    successSound.play();
     // add logic for next levels here later
   }
 }
@@ -98,6 +106,7 @@ function resetGame() {
 function checkCollisions() {
   for (let wall of walls) {
     if (x > wall.x && x < wall.x + wall.width && y > wall.y && y < wall.y + wall.height) {
+      failSound.play();
       return true; // Collision detected
     }
   }

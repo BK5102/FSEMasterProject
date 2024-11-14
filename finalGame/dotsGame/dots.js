@@ -1,6 +1,12 @@
 let score = 0;
 let canScore = true;
+let successSound;
+let failSound;
 
+function preload() {
+  successSound = loadSound('/finalGame/sounds/success-1-6297.mp3'); 
+  failSound = loadSound('/finalGame/sounds/game-fail-90322.mp3'); 
+}
 function setup() {
   let canvas = createCanvas(400, 400);
   canvas.parent("gameCanvas"); // Place the canvas inside the #gameCanvas div
@@ -53,6 +59,7 @@ function mouseClicked() {
       score++;
       canScore = false;
       text("Streak: " + score, 5, 25);
+      successSound.play();
     }
   } else {
     background(233,217,179);
@@ -66,5 +73,7 @@ function mouseClicked() {
 
     score = 0;
     text("Streak: " + score, 5, 25);
+    failSound.play();
+    
   }
 }
