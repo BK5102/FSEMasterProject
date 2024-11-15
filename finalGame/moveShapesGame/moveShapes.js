@@ -126,98 +126,151 @@ function draw() {
 }
 
 function mouseClicked(){
+  // Handle for the rectangle shape
   if(rectSelected){
     rectSelected = false;
     if(abs(rectX - 1350) < 5 && abs(rectY - 200) < 5){
-      rectColor1 = 0
-      rectColor2 = 250
-      rectPlaced = true
+      // Correct placement
+      rectColor1 = 0;
+      rectColor2 = 250;
+      rectPlaced = true;
+      successSound.play();  // Play success sound
+    } else {
+      // Incorrect placement
+      failSound.play();  // Play fail sound
+      resetGame();  // Reset the game
     }
   }
   else if(mouseX >= rectX && mouseX <= rectX + 100 && mouseY >= rectY && mouseY <= rectY + 200 && !triangleSelected && !circleSelected && !ellipseSelected && !squareSelected && !rectPlaced){
-    rectSelected = true
+    rectSelected = true;
   }
+
+  // Handle for the triangle shape
   else if(triangleSelected){
     triangleSelected = false;
     if(abs(triangleX - 1300) < 5 && abs(triangleY - 600) < 5){
-      triangleColor1 = 0
-      triangleColor2 = 250
-      trianglePlaced = true
+      // Correct placement
+      triangleColor1 = 0;
+      triangleColor2 = 250;
+      trianglePlaced = true;
+      successSound.play();  // Play success sound
+    } else {
+      // Incorrect placement
+      failSound.play();  // Play fail sound
+      resetGame();  // Reset the game
     }
   }
   else if(abs(mouseX - triangleX) < 60 && ((mouseY > triangleY && mouseY < triangleY + 25) || (mouseY < triangleY && mouseY > triangleY - 60)) && !circleSelected && !ellipseSelected && !squareSelected && !trianglePlaced){
     triangleSelected = true;
   }
+
+  // Handle for the circle shape
   else if(circleSelected){
-    circleSelected = false
+    circleSelected = false;
     if(abs(circleX - 1200) < 5 && abs(circleY - 120) < 5){
-      circleColor1 = 0
-      circleColor2 = 250
-      circlePlaced = true
+      // Correct placement
+      circleColor1 = 0;
+      circleColor2 = 250;
+      circlePlaced = true;
+      successSound.play();  // Play success sound
+    } else {
+      // Incorrect placement
+      failSound.play();  // Play fail sound
+      resetGame();  // Reset the game
     }
   }
   else if(Math.sqrt(Math.pow(circleX - mouseX, 2) + Math.pow(circleY - mouseY, 2)) < 50 && !ellipseSelected && !squareSelected && !circlePlaced){
-    circleSelected = true
+    circleSelected = true;
   }
+
+  // Handle for the ellipse shape
   else if(ellipseSelected){
-    ellipseSelected = false
+    ellipseSelected = false;
     if(abs(ellipseX - 1100) < 5 && abs(ellipseY - 500) < 5){
-      ellipseColor1 = 0
-      ellipseColor2 = 250
-      ellipsePlaced = true
+      // Correct placement
+      ellipseColor1 = 0;
+      ellipseColor2 = 250;
+      ellipsePlaced = true;
+      successSound.play();  // Play success sound
+    } else {
+      // Incorrect placement
+      failSound.play();  // Play fail sound
+      resetGame();  // Reset the game
     }
   }
   else if(abs(ellipseX - mouseX) < 45 && abs(ellipseY - mouseY) < 100 && !squareSelected && !ellipsePlaced){
-    ellipseSelected = true
+    ellipseSelected = true;
   }
+
+  // Handle for the square shape
   else if(squareSelected){
-    squareSelected = false
+    squareSelected = false;
     if(abs(squareX - 1000) < 5 && abs(squareY - 200) < 5){
-      squareColor1 = 0
-      squareColor2 = 250
-      squarePlaced = true
+      // Correct placement
+      squareColor1 = 0;
+      squareColor2 = 250;
+      squarePlaced = true;
+      successSound.play();  // Play success sound
+    } else {
+      // Incorrect placement
+      failSound.play();  // Play fail sound
+      resetGame();  // Reset the game
     }
   }
   else if(abs((mouseX - 40) - squareX) < 40 && abs((mouseY - 40) - squareY) < 40 && !squarePlaced){
-    squareSelected = true
+    squareSelected = true;
   }
 
+  // Check if the game is finished and all shapes are placed correctly
   if(rectPlaced && trianglePlaced && circlePlaced && ellipsePlaced && squarePlaced && !gameFinished){
-    gameFinished = true
+    gameFinished = true;
   }
+
+  // If game is finished and "Play Again" is clicked, reset the game
   else if(gameFinished && mouseX > 150 && mouseX < 400 && mouseY > 250 && mouseY < 300){
-    gameFinished = false
-    scoreIncremented = false;
-
-    rectPlaced = false
-    trianglePlaced = false
-    circlePlaced = false
-    ellipsePlaced = false
-    squarePlaced = false
-
-    rectColor1 = 250
-    rectColor2 = 0
-    triangleColor1 = 250
-    triangleColor2 = 0
-    circleColor1 = 250
-    circleColor2 = 0
-    ellipseColor1 = 250
-    ellipseColor2 = 0
-    squareColor1 = 250
-    squareColor2 = 0
-
-    rectX = 150
-    rectY = 420
-    triangleX = 100
-    triangleY = 200
-    circleX = 250
-    circleY = 100
-    ellipseX = 80
-    ellipseY = 380
-    squareX = 200
-    squareY = 250
+    resetGame();  // Reset the game
   }
 }
+
+// Function to reset the game
+function resetGame() {
+  gameFinished = false;
+  scoreIncremented = false;
+
+  rectPlaced = false;
+  trianglePlaced = false;
+  circlePlaced = false;
+  ellipsePlaced = false;
+  squarePlaced = false;
+
+  // Reset colors
+  rectColor1 = 250;
+  rectColor2 = 0;
+  triangleColor1 = 250;
+  triangleColor2 = 0;
+  circleColor1 = 250;
+  circleColor2 = 0;
+  ellipseColor1 = 250;
+  ellipseColor2 = 0;
+  squareColor1 = 250;
+  squareColor2 = 0;
+
+  // Reset positions
+  rectX = 150;
+  rectY = 420;
+  triangleX = 100;
+  triangleY = 200;
+  circleX = 250;
+  circleY = 100;
+  ellipseX = 80;
+  ellipseY = 380;
+  squareX = 200;
+  squareY = 250;
+
+  // Reset the score
+  document.getElementById("score").innerText = "Score: 0";
+}
+
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
