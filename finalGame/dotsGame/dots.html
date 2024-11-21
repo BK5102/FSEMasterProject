@@ -18,16 +18,25 @@
   <div class="container my-4">
     <div class="d-flex justify-content-between">
       <a href="../homeScreen/options.html" id="backBtn" class="btn btn-secondary">Back</a>
-     
     </div>
   </div>
 
-  <!-- Title and Instructions -->
+  <!-- Title, Instructions, and Game Controls -->
   <div class="container text-center my-3">
     <h1 class="display-4">Dots Game</h1>
     <p class="lead">
       <strong>How to Play:</strong> Click on the dots as they appear. Your goal is to achieve the highest score by clicking accurately and quickly. Good luck!
     </p>
+
+    <!-- Start Button -->
+    <div class="d-flex justify-content-center my-3">
+      <button id="startButton" class="btn btn-primary mx-2" onclick="startGame()">Start Game</button>
+    </div>
+
+    <!-- Timer Display -->
+    <div id="timerDisplay" class="my-2">
+      <p>Timer: <span id="time">00:00</span></p>
+    </div>
   </div>
 
   <!-- Game Canvas -->
@@ -35,6 +44,13 @@
     <div class="card shadow-lg p-3 mb-5 bg-white rounded">
       <div id="gameCanvas"></div>
     </div>
+  </div>
+
+  <!-- Alert -->
+  <div id="alertBox" class="alert-style">
+    <h3>Try Again!</h3>
+    <p>Click OK to start a new round.</p>
+    <button class="btn btn-primary" onclick="closeAlert()">OK</button>
   </div>
 
   <script src="dots.js"></script>

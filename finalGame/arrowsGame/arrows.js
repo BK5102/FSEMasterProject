@@ -14,11 +14,17 @@ let countdownInterval;
 let countdownActive = false;
 let reverseDirection = false; 
 
+//sound vars
 let ding;
 let greenArrowSound;
 let successSound;
 let failSound;
 let score = 0;
+
+//timer vars
+let timer;
+let seconds = 0;
+let minutes = 0;
 
 function preload() {
   ding = loadSound('/finalGame/sounds/ding-101492.mp3');
@@ -141,17 +147,65 @@ function checkPlayerMovement() {
     } else if (dist(mouseX, mouseY, centerX, centerY) > centerRadius + radius) {
       // Player moved too far from the center path; play fail sound and reset
       failSound.play();
+      showAlert(); // try again message
       arrowHighlighted = false;
       selectedArrow = -1;
     }
   }
 }
 
+function showAlert(){
+  const alertBox = document.getElementById("alertBox");
+  alertBox.style.display = "block"; // Make alert visible
+}
+
+function closeAlert() {
+  const alertBox = document.getElementById("alertBox");
+  alertBox.style.display = "none"; // Hide alert
+}
+
+
+function startTimer() {
+  document.getElementById("startButton").disabled = true; // Disable Start button
+  document.getElementById("timerButton").disabled = false; // Enable Timer button
+  timer = setInterval(updateTimer, 1000); // Start the timer
+}
+
+function updateTimer() {
+  seconds++;
+  if (seconds === 60) {
+    seconds = 0;
+    minutes++;
+  }
+
+  // Update the timer display
+  document.getElementById("timerDisplay").textContent = `${formatTime(minutes)}:${formatTime(seconds)}`;
+}
+
+function formatTime(time) {
+  return time < 10 ? "0" + time : time;
+}
+
+function stopTimer() {
+  clearInterval(timer);
+}
+
+function resetTimer() {
+  minutes = 0;
+  seconds = 0;
+  document.getElementById("timerDisplay").textContent = "00:00";
+}
+
 function updateScoreDisplay() {
   score++;
   document.getElementById("score").innerText = `Score: ${score}`;
   console.log("Score: " + score);
+  stopTimer();
+  resetTimer();
+  startTimer();
 }
+
+
 
 function mouseDragged() {
   checkPlayerMovement();

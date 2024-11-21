@@ -80,11 +80,13 @@ function draw(selectedShape) {
     if (mouseX < 137 || 463 < mouseX || mouseY < 137 || 463 < mouseY) {
       endGameLoss();
       failSound.play();
+      showAlert()
     }
     if (163 < mouseY && mouseY < 437) {
       if (163 < mouseX && mouseX < 437) {
         endGameLoss();
         failSound.play();
+        showAlert()
       }
     }
   }
@@ -134,6 +136,20 @@ function draw(selectedShape) {
     }
   }
 }
+
+function showAlert() {
+  const alertBox = document.getElementById("alertBox");
+  alertBox.style.display = "block"; // Make the alert visible
+}
+
+function closeAlert() {
+  const alertBox = document.getElementById("alertBox");
+  alertBox.style.display = "none"; // Hide the alert
+}
+
+
+
+
 
 function incrementScore() {
   score++; // Increase score by 1

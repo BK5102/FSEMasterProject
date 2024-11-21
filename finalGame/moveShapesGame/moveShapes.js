@@ -39,6 +39,14 @@ let scoreIncremented = false
 
 let successSound;
 let failSound;
+// let enableAlert = false;
+
+//timer
+/* let timerInterval;
+let timerSeconds = 0;  */
+
+
+
 
 function preload() {
   successSound = loadSound('/finalGame/sounds/success-1-6297.mp3'); 
@@ -138,6 +146,8 @@ function mouseClicked(){
     } else {
       // Incorrect placement
       failSound.play();  // Play fail sound
+      
+      showAlert();
       resetGame();  // Reset the game
     }
   }
@@ -157,6 +167,7 @@ function mouseClicked(){
     } else {
       // Incorrect placement
       failSound.play();  // Play fail sound
+      showAlert();
       resetGame();  // Reset the game
     }
   }
@@ -176,6 +187,7 @@ function mouseClicked(){
     } else {
       // Incorrect placement
       failSound.play();  // Play fail sound
+      showAlert();
       resetGame();  // Reset the game
     }
   }
@@ -195,6 +207,7 @@ function mouseClicked(){
     } else {
       // Incorrect placement
       failSound.play();  // Play fail sound
+      showAlert();
       resetGame();  // Reset the game
     }
   }
@@ -214,6 +227,7 @@ function mouseClicked(){
     } else {
       // Incorrect placement
       failSound.play();  // Play fail sound
+      showAlert();
       resetGame();  // Reset the game
     }
   }
@@ -271,7 +285,70 @@ function resetGame() {
   document.getElementById("score").innerText = "Score: 0";
 }
 
+function showAlert() {
+  const alertBox = document.getElementById("alertBox");
+  alertBox.style.display = "block"; // Make the alert visible
+}
+
+function closeAlert() {
+  const alertBox = document.getElementById("alertBox");
+  alertBox.style.display = "none"; // Hide the alert
+}
+
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
+
+
+
+
+
+
+/* function startGame() {
+  // Enable gameplay and reset variables
+  resetGame(); // Resets the shapes and other states
+  document.getElementById("startButton").disabled = true; // Disable the Start button
+  document.getElementById("resetButton").classList.remove("d-none"); // Show Reset button
+  startTimer(); // Start the timer
+}
+
+function startTimer() {
+  // Ensure the timer starts from zero
+  resetTimer();
+
+  // Start the timer and update every second
+  timerInterval = setInterval(() => {
+    timerSeconds++;
+    updateTimerDisplay();
+  }, 1000);
+}
+
+function updateTimerDisplay() {
+  // Calculate minutes and seconds
+  const minutes = Math.floor(timerSeconds / 60);
+  const seconds = timerSeconds % 60;
+
+  // Update the timer element in the HTML
+  document.getElementById("timer").textContent = `${formatTime(minutes)}:${formatTime(seconds)}`;
+}
+
+function formatTime(time) {
+  // Ensure time is always displayed as two digits
+  return time < 10 ? `0${time}` : time;
+}
+
+function stopTimer() {
+  // Stop the timer interval
+  clearInterval(timerInterval);
+}
+
+function resetTimer() {
+  // Reset the timer to 0
+  stopTimer(); // Stop the current timer if running
+  timerSeconds = 0; // Reset seconds
+  updateTimerDisplay(); // Update the display to "00:00"
+
+
+
+} */

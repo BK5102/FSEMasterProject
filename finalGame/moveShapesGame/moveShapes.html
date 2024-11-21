@@ -1,50 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MoveShapes</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" type="text/css" href="moveShapes.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js"></script>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoveShapes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="moveShapes.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/addons/p5.sound.min.js"></script>
-<!-- 
-    <script src="libraries/p5.min.js"></script>
-    <script src="libraries/p5.sound.min.js"></script> -->
-  </head>
-
-  <body class="bg-light">
-    <div class="container my-4">
-      <div class="d-flex justify-content-between">
-        <a href="../homeScreen/options.html" id="backBtn" class="btn btn-secondary">Back</a>
-        <button id="score" class="btn btn-primary">Score: 0</button>
-      </div>
+</head>
+<body class="bg-light">
+  <div class="container my-4">
+    <div class="d-flex justify-content-between">
+      <a href="../homeScreen/options.html" id="backBtn" class="btn btn-secondary">Back</a>
+      <button id="score" class="btn btn-primary">Score: 0</button>
     </div>
-    
-    <div class="container mt-4">
-      <div class="text-center">
-        <h1 class="display-4">Move the Shapes</h1>
-        <p class="lead">How to Play: Drag and drop each shape to its correct location.</p>
-      </div>
-
-    <!-- Navigation -->
-    
+  </div>
+  
+  <div class="container mt-4">
+    <div class="text-center">
+      <h1 class="display-4">Move the Shapes</h1>
+      <p class="lead">How to Play: Drag and drop each shape to its correct location.</p>
+      <button id="startButton" class="btn btn-success my-3" onclick="startGame()">Start Game</button>
+      <div id="timer" class="display-6">00:00</div>
       
-      <!-- Game Canvas -->
-      <div id="gameCanvas" class="d-flex justify-content-center mt-4 mb-4">
-        <!-- The p5.js canvas will be created here -->
-      </div>
-
-      <div class="text-center">
-        <button id="resetButton" class="btn btn-primary mt-3 d-none">Play Again</button>
-      </div>
     </div>
 
-    <!-- JavaScript files -->
-    <script src="moveShapes.js"></script>
-    <!-- Bootstrap JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+    <!-- Game Canvas -->
+    <div id="gameCanvas" class="d-flex justify-content-center mt-4 mb-4"></div>
+
+    <!-- Alert -->
+    <div id="alertBox" class="alert-style">
+      <h3>Try Again!</h3>
+      <p>Click OK to start a new round.</p>
+      <button class="btn btn-primary" onclick="closeAlert()">OK</button>
+    </div>
+  </div>
+
+  <!-- JavaScript files -->
+  <script src="moveShapes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

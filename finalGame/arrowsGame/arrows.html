@@ -10,6 +10,7 @@
   <link rel="stylesheet" type="text/css" href="arrows.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/addons/p5.sound.min.js"></script>
+
   <title>Arrows Game</title>
 </head>
 <body class="bg-light text-center">
@@ -25,7 +26,19 @@
 
   <!-- Title and Instructions -->
   <div class="container text-center my-3">
-    <h1 class="display-4">Arrow Game</h1>
+    <div class="d-flex justify-content-between">
+      <!-- Left Button -->
+      <button id="startButton" class="btn btn-primary mx-2" onclick="startTimer()">Start Game</button>
+      <!-- Title -->
+      <h1 class="display-4 mx-3">Arrow Game</h1>
+      <!-- Right Button -->
+      <div class="d-flex justify-content-end" style="gap: 0.25rem;">
+        <button id="timerButton" class="btn btn-primary" disabled>Timer: 
+          <span id="timerDisplay">00:00</span>
+        </button>
+      </div>
+    </div>
+
     <p class="lead">
       <strong>How to Play:</strong> Click the center circle. After the sounds play, drag your cursor from the center to the green-highlighted circle, following the arrows. Avoid moving too quickly or too far off the path!
     </p>
@@ -38,6 +51,13 @@
     </div>
   </div>
 
+   <!-- Alert -->
+  <div id="alertBox" class="alert-style">
+    <h3>Try Again!</h3>
+    <p>Click OK to start a new round.</p>
+    <button class="btn btn-primary" onclick="closeAlert()">OK</button>
+  </div>
+
+
+
   <script src="arrows.js"></script>
-</body>
-</html>
