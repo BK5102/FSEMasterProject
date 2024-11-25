@@ -25,6 +25,8 @@ let score = 0;
 let timer;
 let seconds = 0;
 let minutes = 0;
+let gamestart = false;
+let gameName="Arrows";
 
 function preload() {
   ding = loadSound('/finalGame/sounds/ding-101492.mp3');
@@ -37,6 +39,14 @@ function setup() {
   let canvas = createCanvas(400, 400);
   canvas.parent("gameCanvas"); // Place the canvas inside the #gameCanvas div
   //updateScoreDisplay();
+  initializeToast();
+  let userName=getLoggedInUserName();
+  document.getElementById('usernameLabel').innerHTML=userName;
+
+  let topScoreUser=getTopScoreUserByGame(gameName);
+  let topScoreValue=getFormattedTopScoreValueByGame(gameName);
+  document.getElementById('topScoreUser').innerHTML=topScoreUser;
+  document.getElementById('topScoreValue').innerHTML=topScoreValue;
 }
 
 function draw() {
@@ -87,8 +97,10 @@ function drawArrow(x1, y1, x2, y2, isSelected) {
 
 function mouseClicked() {
   // Check if center circle is clicked
-  if (dist(mouseX, mouseY, centerX, centerY) < centerRadius && !countdownActive) {
-    startCountdown();
+  if(gamestart){
+    if (dist(mouseX, mouseY, centerX, centerY) < centerRadius && !countdownActive) {
+      startCountdown();
+    }
   }
 }
 
@@ -154,22 +166,41 @@ function checkPlayerMovement() {
   }
 }
 
-function showAlert(){
-  const alertBox = document.getElementById("alertBox");
-  alertBox.style.display = "block"; // Make alert visible
+function initializeToast(){
+  var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+  var toastList = toastElList.map(function (toastEl) {
+    return new bootstrap.Toast(toastEl)
+  })
 }
+
+function showAlert() {
+  /*const alertBox = document.getElementById("alertBox");
+  alertBox.style.display = "block"; // Make the alert visible*/
+  var liveToast = document.getElementById('liveToast')
+  var myToast = bootstrap.Toast.getInstance(liveToast) // Returns a Bootstrap toast instance
+  myToast.show();
+
+}
+
 
 function closeAlert() {
   const alertBox = document.getElementById("alertBox");
   alertBox.style.display = "none"; // Hide alert
 }
 
+// Start the timer when the game starts
+function startGame() {
+  document.getElementById("startButton").disabled = true; // Disable Start button
+  resetTimer();
+  timer = setInterval(updateTimer, 1000); // Start timer
+  gamestart = true;
+}
 
-function startTimer() {
+/*function startTimer() {
   document.getElementById("startButton").disabled = true; // Disable Start button
   document.getElementById("timerButton").disabled = false; // Enable Timer button
   timer = setInterval(updateTimer, 1000); // Start the timer
-}
+}*/
 
 function updateTimer() {
   seconds++;
@@ -202,7 +233,7 @@ function updateScoreDisplay() {
   console.log("Score: " + score);
   stopTimer();
   resetTimer();
-  startTimer();
+  //startTimer(); changed this to startGame
 }
 
 
@@ -211,3 +242,7 @@ function mouseDragged() {
   checkPlayerMovement();
 }
 
+function stopGame(){
+  //save score
+  saveOrUpdateTopScore(gameName, score, ((minutes * 60) + seconds));    
+}

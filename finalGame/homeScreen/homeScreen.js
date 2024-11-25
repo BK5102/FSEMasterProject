@@ -13,24 +13,27 @@ function submitUserData() {
       return; // Stop navigation
   }
 
-  // If validation passes, navigate to another page
-  window.location.href = "options.html";
-
   // Create an object with form data
   const formData = {
-    name: firstName,
-    age: lastName,
+    firstname: firstName,
+    lastname: lastName,
     email: email,
     password: password
   };
 
-  // Convert the object to a JSON string
-  const jsonData = JSON.stringify(formData);
-
-  // Log or use the JSON data as needed
-  console.log(jsonData);
-
-  localStorage.setItem("dataForm", jsonData);
+  var users = [];
+  var regusers = localStorage.getItem("registeredUsers");
+  if(regusers != undefined){
+    var storedUsers = JSON.parse(regusers);
+    storedUsers.push(formData);
+    localStorage.setItem("registeredUsers", JSON.stringify(storedUsers));
+  }
+  else{
+    users.push(formData);
+    localStorage.setItem("registeredUsers", JSON.stringify(users));
+  }  
+  // If validation passes, navigate to another page
+  window.location.href = "options.html";
 }
 
 // sign in
@@ -44,22 +47,17 @@ function submitLoginData() {
       return; // Stop navigation
   }
 
-  // If validation passes, navigate to another page
-  window.location.href = "options.html";
-
-  // Create an object with form data
-  const formDataLogin = {
-    email: email,
-    password: password
-  };
-
-  // Convert the object to a JSON string
-  const jsonData = JSON.stringify(formDataLogin);
-
-  // Log or use the JSON data as needed
-  console.log(jsonData);
-
-  localStorage.setItem("formDataLogin", jsonData);
+  if(authenticateUser(email, password)){
+    // authentcation succes
+    loggedInUserName = getNameByEmailID(email);
+    localStorage.setItem("loggedInUser", loggedInUserName);    
+    window.location.href = "options.html";
+  }
+  else{
+    alert("Invalid Credentials");
+    return; // Stop navigation
+  }
+    
 }
 
 

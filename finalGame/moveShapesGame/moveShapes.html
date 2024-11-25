@@ -8,37 +8,72 @@
   <link rel="stylesheet" type="text/css" href="moveShapes.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/addons/p5.sound.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body class="bg-light">
   <div class="container my-4">
     <div class="d-flex justify-content-between">
       <a href="../homeScreen/options.html" id="backBtn" class="btn btn-secondary">Back</a>
+      <span id="usernameLabel" class="text-success fw-bold fs-4">username</span>
       <button id="score" class="btn btn-primary">Score: 0</button>
     </div>
   </div>
   
-  <div class="container mt-4">
-    <div class="text-center">
-      <h1 class="display-4">Move the Shapes</h1>
-      <p class="lead">How to Play: Drag and drop each shape to its correct location.</p>
-      <button id="startButton" class="btn btn-success my-3" onclick="startGame()">Start Game</button>
-      <div id="timer" class="display-6">00:00</div>
-      
+  <!-- Title and Instructions -->
+  <div class="container text-center my-3">
+    <div class="d-flex justify-content-between">
+      <!-- Left Button -->
+      <button id="startButton" class="btn btn-primary mx-2" onclick="startGame()">Start Game</button>
+      <!-- Title -->
+      <h1 class="display-4 mx-3">Move the Shapes</h1>
+      <!-- Right Button -->
+      <div class="d-flex justify-content-end" style="gap: 0.25rem;">
+        <button id="timerButton" class="btn btn-primary" disabled>
+          <p>Timer: <span id="time">00:00</span></p>
+        </button>
+        <button id="stopButton" class="btn btn-primary mx-2" onclick="stopGame()">Stop Game</button>
+      </div>
     </div>
-
-    <!-- Game Canvas -->
-    <div id="gameCanvas" class="d-flex justify-content-center mt-4 mb-4"></div>
-
-    <!-- Alert -->
-    <div id="alertBox" class="alert-style">
-      <h3>Try Again!</h3>
-      <p>Click OK to start a new round.</p>
-      <button class="btn btn-primary" onclick="closeAlert()">OK</button>
+    <p class="lead">
+      <strong>How to Play:</strong> Drag and drop each shape to its correct location. Good luck!
+    </p>
+    <div class="alert alert-primary" role="alert">
+      <span class="fw-bold fs-4">Top Score : </span>
+      <span id="topScoreUser" class="text-success fw-bold fs-5">Peter Griffin.</span>
+      <span id="topScoreValue" class="text-success  fs-6">Score : 42, in 52 seconds</span>
     </div>
   </div>
 
+  <!-- Game Canvas -->
+  <div class="container d-flex justify-content-center">
+    <div class="d-flex justify-content-center mt-4 mb-4">
+      <div id="gameCanvas"></div>
+    </div>
+  </div>
+
+
+
+    <!-- Toast -->
+    <div class="position-fixed bottom-0 end-0 p-3" ">
+      <div id="liveToast" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body">
+            Please try again !
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      </div>
+      </div>
+    
+      <!-- Alert
+      <div id="alertBox" class="alert-style">
+        <h3>Try Again!</h3>
+        <p>Click OK to start a new round.</p>
+        <button class="btn btn-primary" onclick="closeAlert()">OK</button>
+      </div> -->
+
   <!-- JavaScript files -->
-  <script src="moveShapes.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../utils/utils.js"></script>
+  <script src="moveShapes.js"></script>  
 </body>
 </html>

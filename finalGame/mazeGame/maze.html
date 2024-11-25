@@ -13,21 +13,50 @@
     <!-- Link to custom CSS -->
     <link rel="stylesheet" href="maze.css" />
   </head>
-  <body class="bg-light">
+  <body class="bg-light text-center">
     <div class="container my-4">
       <div class="d-flex justify-content-between">
         <a href="../homeScreen/options.html" id="backBtn" class="btn btn-secondary">Back</a>
-        <button id="score" class="btn btn-primary">Score: 0</button>
+        <span id="usernameLabel" class="text-success fw-bold fs-4">username</span>
+        <button id="score" class="btn btn-primary">Score: 0</button>  
       </div>
     </div>
-
+    
+    <!-- Title and Instructions -->
     <div class="container text-center my-3">
-      <h1 class="display-4">Maze Game</h1>
+      <div class="d-flex justify-content-between">
+        <!-- Left Button -->
+        <button id="startButton" class="btn btn-primary mx-2" onclick="startGame()">Start Game</button>
+        <!-- Title -->
+        <h1 class="display-4 mx-3">Maze Game</h1>
+        <!-- Right Button -->
+        <div class="d-flex justify-content-end" style="gap: 0.25rem;">
+          <button id="timerButton" class="btn btn-primary" disabled>
+            <p>Timer: <span id="time">00:00</span></p>
+          </button>
+        </div>
+      </div>
       <p class="lead">
         <strong>How to Play:</strong> Use the arrow keys to move and avoid the walls. Reach the checkpoint to win!
       </p>
+      <div class="alert alert-primary" role="alert">
+        <span class="fw-bold fs-4">Top Score : </span>
+        <span id="topScoreUser" class="text-success fw-bold fs-5">Peter Griffin.</span>
+        <span id="topScoreValue" class="text-success  fs-6">Score : 42, in 52 seconds</span>
+      </div>
     </div>
 
+     <!-- Toast -->
+     <div class="position-fixed bottom-0 end-0 p-3" >
+    <div id="liveToast" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          Please try again !
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+     </div>
     <!-- Alert -->
     <div id="alertBox" class="alert-style">
       <h3>Try Again!</h3>
@@ -38,6 +67,7 @@
     
 
     <!-- Link to the JavaScript game file -->
+    <script src="../utils/utils.js"></script>
     <script src="maze.js"></script>
   </body>
 </html>

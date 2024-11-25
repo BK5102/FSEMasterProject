@@ -29,6 +29,11 @@ let score = 0
 let scoreIncremented = false
 let successSound;
 let failSound;
+let timer;
+let seconds = 0;
+let minutes = 0;
+let gamestart=false;
+let gameName="Maze";
 
 function preload() {
   successSound = loadSound('/finalGame/sounds/success-1-6297.mp3'); 
@@ -43,9 +48,17 @@ function setup() {
   stroke('red');
   
   collectItem = loadImage('assets/Checkpoint image.png'); // Load the collection item
+  let userName=getLoggedInUserName();
+  document.getElementById('usernameLabel').innerHTML=userName;
+  
+  let topScoreUser=getTopScoreUserByGame(gameName);
+  let topScoreValue=getFormattedTopScoreValueByGame(gameName);
+  document.getElementById('topScoreUser').innerHTML=topScoreUser;
+  document.getElementById('topScoreValue').innerHTML=topScoreValue;
 }
 
 function draw() {
+
   background(233,217,179);
 
   // Set text color to transparent
@@ -76,12 +89,18 @@ function draw() {
     text('You win!', 200, 300);
     incrementScore()
     successSound.play();
+    //save score
+    saveOrUpdateTopScore(gameName, score, ((minutes * 60) + seconds));
+    
     // add logic for next levels here later
+
   }
 }
 
 // Function to handle movement
 function handleMovement() {
+  if(!gamestart)
+    return;
   if (keyIsDown(RIGHT_ARROW)) {
     x += 5; // Move right
   }
@@ -122,3 +141,60 @@ function incrementScore() {
   }
   
 }
+
+// Start the timer when the game starts
+function startGame() {
+  document.getElementById("startButton").disabled = true; // Disable Start button
+  resetTimer();
+  timer = setInterval(updateTimer, 1000); // Start timer
+  gamestart = true;
+}
+
+
+function updateTimer() {
+  seconds++;
+  if (seconds === 60) {
+    seconds = 0;
+    minutes++;
+  }
+  document.getElementById("time").textContent = `${formatTime(minutes)}:${formatTime(seconds)}`;
+}
+
+/*function updateTimerDisplay() {
+  let minutesDisplay = Math.floor(countdown / 60);
+  let secondsDisplay = countdown % 60;
+  document.getElementById("time").textContent = `${formatTime(minutesDisplay)}:${formatTime(secondsDisplay)}`;
+}*/
+
+function resetTimer() {
+  clearInterval(timer); // Stop any existing timer
+  seconds = 0;
+  minutes = 0;
+  document.getElementById("time").textContent = "00:00"; // Reset display
+}
+
+function formatTime(time) {
+  return time < 10 ? "0" + time : time;
+}
+
+function initializeToast(){
+  var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+  var toastList = toastElList.map(function (toastEl) {
+    return new bootstrap.Toast(toastEl, option)
+  })
+}
+
+function showAlert() {
+  /*const alertBox = document.getElementById("alertBox");
+  alertBox.style.display = "block"; // Make the alert visible*/
+  var liveToast = document.getElementById('liveToast')
+  var myToast = bootstrap.Toast.getInstance(liveToast) // Returns a Bootstrap toast instance
+  myToast.show();
+
+}
+
+function closeAlert() {
+  /*const alertBox = document.getElementById("alertBox");
+  alertBox.style.display = "none"; // Hide the alert*/
+}
+

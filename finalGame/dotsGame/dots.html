@@ -8,6 +8,7 @@
     rel="stylesheet"
   >
   <link rel="stylesheet" type="text/css" href="dots.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/addons/p5.sound.min.js"></script>
   <title>Dots Game</title>
@@ -16,26 +17,35 @@
 
   <!-- Navigation -->
   <div class="container my-4">
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between">      
       <a href="../homeScreen/options.html" id="backBtn" class="btn btn-secondary">Back</a>
+      <span id="usernameLabel" class="text-success fw-bold fs-4">username</span>
+      <div></div><!-- since we dont have score here, added empty div, to align username center -->
     </div>
   </div>
 
-  <!-- Title, Instructions, and Game Controls -->
+  <!-- Title and Instructions -->
   <div class="container text-center my-3">
-    <h1 class="display-4">Dots Game</h1>
+    <div class="d-flex justify-content-between">
+      <!-- Left Button -->
+      <button id="startButton" class="btn btn-primary mx-2" onclick="startGame()">Start Game</button>
+      <!-- Title -->
+      <h1 class="display-4 mx-3">Dots Game</h1>
+      <!-- Right Button -->
+      <div class="d-flex justify-content-end" style="gap: 0.25rem;">
+        <button id="timerButton" class="btn btn-primary" disabled>
+          <p>Timer: <span id="time">00:00</span></p>
+        </button>
+        <button id="stopButton" class="btn btn-primary mx-2" onclick="stopGame()">Stop Game</button>
+      </div>
+    </div>
     <p class="lead">
       <strong>How to Play:</strong> Click on the dots as they appear. Your goal is to achieve the highest score by clicking accurately and quickly. Good luck!
     </p>
-
-    <!-- Start Button -->
-    <div class="d-flex justify-content-center my-3">
-      <button id="startButton" class="btn btn-primary mx-2" onclick="startGame()">Start Game</button>
-    </div>
-
-    <!-- Timer Display -->
-    <div id="timerDisplay" class="my-2">
-      <p>Timer: <span id="time">00:00</span></p>
+    <div class="alert alert-primary" role="alert">
+      <span class="fw-bold fs-4">Top Score : </span>
+      <span id="topScoreUser" class="text-success fw-bold fs-5">Peter Griffin.</span>
+      <span id="topScoreValue" class="text-success  fs-6">Score : 42, in 52 seconds</span>
     </div>
   </div>
 
@@ -46,13 +56,26 @@
     </div>
   </div>
 
-  <!-- Alert -->
+  <!-- Toast -->
+  <div class="position-fixed bottom-0 end-0 p-3" ">
+  <div id="liveToast" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        Please try again !
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+  </div>
+
+  <!-- Alert
   <div id="alertBox" class="alert-style">
     <h3>Try Again!</h3>
     <p>Click OK to start a new round.</p>
     <button class="btn btn-primary" onclick="closeAlert()">OK</button>
-  </div>
+  </div> -->
 
+  <script src="../utils/utils.js"></script>
   <script src="dots.js"></script>
 </body>
 </html>

@@ -39,6 +39,12 @@ let scoreIncremented = false
 
 let successSound;
 let failSound;
+let timer;
+let seconds = 0;
+let minutes = 0;
+let gamestart=false;
+let gameName="Shapes";
+
 // let enableAlert = false;
 
 //timer
@@ -55,6 +61,14 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  initializeToast();
+  let userName=getLoggedInUserName();
+  document.getElementById('usernameLabel').innerHTML=userName;
+  let topScoreUser=getTopScoreUserByGame(gameName);
+  let topScoreValue=getFormattedTopScoreValueByGame(gameName);
+  document.getElementById('topScoreUser').innerHTML=topScoreUser;
+  document.getElementById('topScoreValue').innerHTML=topScoreValue;
+  
 }
 
 function draw() {
@@ -126,6 +140,8 @@ function draw() {
 
     incrementScore();
     successSound.play();
+
+    saveOrUpdateTopScore(gameName, score, ((minutes * 60) + seconds));
 
     textSize(25)
     fill(250)
@@ -243,6 +259,7 @@ function mouseClicked(){
   // If game is finished and "Play Again" is clicked, reset the game
   else if(gameFinished && mouseX > 150 && mouseX < 400 && mouseY > 250 && mouseY < 300){
     resetGame();  // Reset the game
+    startGame();
   }
 }
 
@@ -285,9 +302,20 @@ function resetGame() {
   document.getElementById("score").innerText = "Score: 0";
 }
 
+function initializeToast(){
+  var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+  var toastList = toastElList.map(function (toastEl) {
+    return new bootstrap.Toast(toastEl)
+  })
+}
+
 function showAlert() {
-  const alertBox = document.getElementById("alertBox");
-  alertBox.style.display = "block"; // Make the alert visible
+  /*const alertBox = document.getElementById("alertBox");
+  alertBox.style.display = "block"; // Make the alert visible*/
+  var liveToast = document.getElementById('liveToast')
+  var myToast = bootstrap.Toast.getInstance(liveToast) // Returns a Bootstrap toast instance
+  myToast.show();
+
 }
 
 function closeAlert() {
@@ -304,51 +332,41 @@ function windowResized() {
 
 
 
-
-/* function startGame() {
-  // Enable gameplay and reset variables
-  resetGame(); // Resets the shapes and other states
-  document.getElementById("startButton").disabled = true; // Disable the Start button
-  document.getElementById("resetButton").classList.remove("d-none"); // Show Reset button
-  startTimer(); // Start the timer
-}
-
-function startTimer() {
-  // Ensure the timer starts from zero
+// Start the timer when the game starts
+function startGame() {
+  document.getElementById("startButton").disabled = true; // Disable Start button
   resetTimer();
-
-  // Start the timer and update every second
-  timerInterval = setInterval(() => {
-    timerSeconds++;
-    updateTimerDisplay();
-  }, 1000);
+  timer = setInterval(updateTimer, 1000); // Start timer
+  gamestart = true;
 }
 
-function updateTimerDisplay() {
-  // Calculate minutes and seconds
-  const minutes = Math.floor(timerSeconds / 60);
-  const seconds = timerSeconds % 60;
+function updateTimer() {
+  seconds++;
+  if (seconds === 60) {
+    seconds = 0;
+    minutes++;
+  }
+  document.getElementById("time").textContent = `${formatTime(minutes)}:${formatTime(seconds)}`;
+}
 
-  // Update the timer element in the HTML
-  document.getElementById("timer").textContent = `${formatTime(minutes)}:${formatTime(seconds)}`;
+/*function updateTimerDisplay() {
+  let minutesDisplay = Math.floor(countdown / 60);
+  let secondsDisplay = countdown % 60;
+  document.getElementById("time").textContent = `${formatTime(minutesDisplay)}:${formatTime(secondsDisplay)}`;
+}*/
+
+function resetTimer() {
+  clearInterval(timer); // Stop any existing timer
+  seconds = 0;
+  minutes = 0;
+  document.getElementById("time").textContent = "00:00"; // Reset display
 }
 
 function formatTime(time) {
-  // Ensure time is always displayed as two digits
-  return time < 10 ? `0${time}` : time;
+  return time < 10 ? "0" + time : time;
 }
 
-function stopTimer() {
-  // Stop the timer interval
-  clearInterval(timerInterval);
+function stopGame(){
+  //save score
+  saveOrUpdateTopScore(gameName, score, ((minutes * 60) + seconds));    
 }
-
-function resetTimer() {
-  // Reset the timer to 0
-  stopTimer(); // Stop the current timer if running
-  timerSeconds = 0; // Reset seconds
-  updateTimerDisplay(); // Update the display to "00:00"
-
-
-
-} */
