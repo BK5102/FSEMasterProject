@@ -48,7 +48,7 @@ function submitLoginData() {
   }
 
   if(authenticateUser(email, password)){
-    // authentcation succes
+    // authentication success
     loggedInUserName = getNameByEmailID(email);
     localStorage.setItem("loggedInUser", loggedInUserName);    
     window.location.href = "options.html";
