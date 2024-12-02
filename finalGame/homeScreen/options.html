@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html id="bgcolor" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choose Options</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="home.css">
+
+  <!-- p5.js Libraries -->
+  <script src="libraries/p5.min.js"></script>
+  <script src="libraries/p5.sound.min.js"></script>
+</head> 
+
+<body>
+
+  <!-- Navigation -->
+  <div class="container my-4">
+    <div class="d-flex justify-content-end">    
+      <button id="backBtn" class="btn btn-secondary" onclick="signOutUser()">Sign Out</button>
+    </div>
+  </div>
+
+  <!-- Page Title and Instructions -->
+  <div class="container text-center my-3">
+    <h1 class="page-title">Choose Options</h1>
+    <p class="instructions">Please choose a game:</p>
+  </div>
+  <div class=""></div>
+  <div class="row justify-content-center gy-3">
+    <div class="col-14 col-md-2">
+      <div class="card">
+        <img src="https://t4.ftcdn.net/jpg/10/81/18/13/360_F_1081181388_y7rdEyniik4v5TAoNVhy0gwXgORdUSB5.jpg" class="card-img-top"
+          alt="Maze Image" />
+        <div class="card-body">
+          <h5 class="card-title">Maze</h5>
+          <p class="card-text">
+            Click here to play the Maze game! Navigate through the maze and avoid the walls to reach the end!
+          </p>          
+        </div>
+        <div class="card-footer">
+          <a href="..\mazeGame\maze.html" class="btn btn-primary btn-lg w-100">Maze</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-14 col-md-2">
+      <div class="card">
+        <img src="https://ecdn.teacherspayteachers.com/thumbitem/Symmetry-Tracing-Trace-the-Other-Side-of-a-2D-Shape-Clip-Art-Clipart-7297101-1671677861/original-7297101-3.jpg" class="card-img-top"
+          alt="Tracer Image" />
+        <div class="card-body">
+          <h5 class="card-title">Tracer</h5>
+          <p class="card-text">
+            Click here to play the Tracer game! Trace along the shape and avoid going outside!       
+          </p>          
+        </div>
+        <div class="card-footer">
+          <a href="..\traceGame\trace.html" class="btn btn-primary btn-lg w-100">Tracer</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-14 col-md-2">
+      <div class="card">
+        <img src="https://static.vecteezy.com/system/resources/previews/002/882/811/non_2x/outline-geometric-shapes-icon-on-white-background-free-vector.jpg" class="card-img-top"
+          alt="Outlined Shapes Image" />
+        <div class="card-body">
+          <h5 class="card-title">Outlined Shapes</h5>
+          <p class="card-text">
+            Click here to play the Outlined Shapes game! Drag the shapes from the left and drop them in the right!
+          </p>
+        </div>
+        <div class="card-footer">
+          <a href="..\moveShapesGame\moveShapes.html" class="btn btn-primary btn-lg w-100">Outlined Shapes</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-14 col-md-2">
+      <div class="card">
+        <img src="https://c8.alamy.com/comp/GA3G0D/circle-with-arrows-coming-out-icon-GA3G0D.jpg" class="card-img-top"
+          alt="Arrows Image" />
+        <div class="card-body">
+          <h5 class="card-title">Arrows</h5>
+          <p class="card-text">
+            Click here to play the Arrows game! Drag your cursor from the center circle along the arrows!
+          </p>          
+        </div>
+        <div class="card-footer">
+          <a href="..\arrowsGame\arrows.html" class="btn btn-primary btn-lg w-100">Arrows</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-14 col-md-2">
+      <div class="card">
+        <img src="https://img.freepik.com/free-vector/abstract-doodle-random-polka-dot-background_78370-4268.jpg" class="card-img-top"
+          alt="Dots Image" />
+        <div class="card-body">
+          <h5 class="card-title">Dots</h5>
+          <p class="card-text">
+            Click here to play the Dots game! Click on the dots as they appear accurately and quickly!
+          </p>          
+        </div>
+        <div class="card-footer">
+          <a href="..\dotsGame\dots.html" class="btn btn-primary btn-lg w-100">Dots</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Options 
+  <div class="container">
+
+    <div class="row justify-content-center gy-3">
+      <div class="col-14 col-md-3">
+        <a href="..\mazeGame\maze.html" class="btn btn-primary btn-lg w-100">Maze</a>
+      </div>
+
+      <div class="w-100"></div>
+
+      <div class="col-14 col-md-3">
+        <a href="..\traceGame\trace.html" class="btn btn-primary btn-lg w-100">Tracer</a>
+      </div>
+
+      <div class="w-100"></div>
+
+      <div class="col-14 col-md-3">
+        <a href="..\moveShapesGame\moveShapes.html" class="btn btn-primary btn-lg w-100">Outlined Shapes</a>
+      </div>
+
+      <div class="w-100"></div>
+
+      <div class="col-14 col-md-3">
+        <a href="..\arrowsGame\arrows.html" class="btn btn-primary btn-lg w-100">Arrows</a>
+      </div>
+
+      <div class="w-100"></div>
+
+      <div class="col-14 col-md-3">
+        <a href="..\dotsGame\dots.html" class="btn btn-primary btn-lg w-100">Dots</a>
+      </div>
+    </div>
+  </div>-->
+
+ 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+<style>
+body{
+  background-color: beige;
+}
+
+</style>
+
+<script>
+  function signOutUser()
+  {
+    localStorage.removeItem("loggedInUser")
+    // If validation passes, navigate to another page
+    window.location.href = "home.html";
+  }
+</script>
+
+
+</html>
