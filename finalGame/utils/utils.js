@@ -7,25 +7,27 @@ function getLoggedInUserName() {
 
 }
 
-function saveOrUpdateTopScore(game, score, timeInSeconds){
-    var currentScoreObj = {
-        userName: getLoggedInUserName(),        
-        score: score,        
-        time: timeInSeconds
-    };
+function saveOrUpdateTopScore(game, score, timeInSeconds){    
+    if(score > 0 && timeInSeconds > 0) {
+        var currentScoreObj = {
+            userName: getLoggedInUserName(),        
+            score: score,        
+            time: timeInSeconds
+        };
 
-    var key = "TOPSCORE_"+ game.toUpperCase(); //ex. TOPSCORE_MAZE    
-    var existingTopScoreObj = localStorage.getItem(key);
-    if(existingTopScoreObj != undefined){
-        var existingTopScoreJsonObj = JSON.parse(existingTopScoreObj);
-        if((score >= existingTopScoreJsonObj.score) 
-            && (timeInSeconds <= existingTopScoreJsonObj.time)){ 
-            //New Top Score
+        var key = "TOPSCORE_"+ game.toUpperCase(); //ex. TOPSCORE_MAZE    
+        var existingTopScoreObj = localStorage.getItem(key);
+        if(existingTopScoreObj != undefined){
+            var existingTopScoreJsonObj = JSON.parse(existingTopScoreObj);
+            if((score >= existingTopScoreJsonObj.score) 
+                && (timeInSeconds <= existingTopScoreJsonObj.time)){ 
+                //New Top Score
+                localStorage.setItem(key, JSON.stringify(currentScoreObj));
+            }
+        }
+        else{ //first time
             localStorage.setItem(key, JSON.stringify(currentScoreObj));
         }
-    }
-    else{ //first time
-        localStorage.setItem(key, JSON.stringify(currentScoreObj));
     }
 }
 
@@ -41,7 +43,10 @@ function getTopScoreByGame(game){
 function getTopScoreUserByGame(game){
     var topScoreJsonObj = getTopScoreByGame(game);
     if(topScoreJsonObj != "")
-      return topScoreJsonObj.userName;
+        if(topScoreJsonObj.score > 0 && topScoreJsonObj.time > 0)
+            return topScoreJsonObj.userName;
+        else
+            return "";
     else
       return "";
 }
@@ -49,7 +54,10 @@ function getTopScoreUserByGame(game){
 function getFormattedTopScoreValueByGame(game){
     var topScoreJsonObj = getTopScoreByGame(game);
     if(topScoreJsonObj != "")
-        return "Score :" + topScoreJsonObj.score + ", in " + topScoreJsonObj.time + " seconds !!";
+        if(topScoreJsonObj.score > 0 && topScoreJsonObj.time > 0)
+            return "Score : " + topScoreJsonObj.score + ", in " + topScoreJsonObj.time + " seconds !!";
+        else
+            return "";        
     else
         return "";
 }

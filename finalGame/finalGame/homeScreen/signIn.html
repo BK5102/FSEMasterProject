@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html id="bgcolor" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sign In</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="home.css">
+
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
+
+  </head> 
+
+  <body class="login-bg">
+    <!-- Back Button -->
+    <div class="container my-3 text-left"> 
+        <a href="home.html" id="backBtn" class="btn btn-secondary">Back</a>
+    </div>  
+
+    <!-- Sign-In Form -->
+    <div class="container text-center">
+      <h1>Welcome Back!</h1>
+      <h2>Please Sign In</h2>
+      <p>Please enter the following:</p>
+
+      <!-- Form Section -->
+      <form class="text-left" style="max-width: 500px; margin: auto;">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email">
+        </div>
+
+        <div class="form-group mt-3">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter password">
+        </div>
+
+        <div class="text-center">    
+          <a href="#" onclick="submitLoginData(); return false;" id="loginBtn" class="btn btn-success">Login</a>
+        </div>
+      </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script src="../utils/utils.js"></script>
+    <script src="homeScreen.js"></script>
+
+  </body>
+</html>

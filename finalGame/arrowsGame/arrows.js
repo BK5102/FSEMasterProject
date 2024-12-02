@@ -231,9 +231,14 @@ function updateScoreDisplay() {
   score++;
   document.getElementById("score").innerText = `Score: ${score}`;
   console.log("Score: " + score);
-  stopTimer();
-  resetTimer();
-  //startTimer(); changed this to startGame
+ /*
+ dont reset the timer. if we do, then ideally score should also be set to 0. otherwise,
+ Top score will have wrong data (accumulated score of multiple rounds but time is for the current round)
+ */
+ // stopTimer();
+ // resetTimer();
+ // timer = setInterval(updateTimer, 1000); // Start timer
+  
 }
 
 
@@ -243,6 +248,8 @@ function mouseDragged() {
 }
 
 function stopGame(){
-  //save score
-  saveOrUpdateTopScore(gameName, score, ((minutes * 60) + seconds));    
+  stopTimer();
+  saveOrUpdateTopScore(gameName, score, ((minutes * 60) + seconds));
+  document.getElementById("startButton").disabled = false; // Enable Start button
+  gamestart=false;
 }

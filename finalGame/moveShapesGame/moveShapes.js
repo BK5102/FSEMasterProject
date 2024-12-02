@@ -150,6 +150,10 @@ function draw() {
 }
 
 function mouseClicked(){
+  //if game is not started, return
+
+  if(!gamestart)
+    return ;
   // Handle for the rectangle shape
   if(rectSelected){
     rectSelected = false;
@@ -367,6 +371,8 @@ function formatTime(time) {
 }
 
 function stopGame(){
-  //save score
-  saveOrUpdateTopScore(gameName, score, ((minutes * 60) + seconds));    
+  resetTimer();
+  saveOrUpdateTopScore(gameName, score, ((minutes * 60) + seconds));
+  document.getElementById("startButton").disabled = false; // Enable Start button 
+  gamestart=false; 
 }

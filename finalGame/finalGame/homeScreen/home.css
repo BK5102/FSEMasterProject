@@ -1,0 +1,106 @@
+body {
+  background-color: #e6d7f2;
+  margin: 0;
+  padding: 0;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.login-bg{
+  background-color: rgb(220, 235, 245);
+
+}
+
+h1.page-title {
+  text-align: center;
+  color: #6c0053;
+  font-style: italic;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+#form-instructions {
+  font-size: 1.25rem;
+  color: #6300ce;
+  font-weight: bold;
+}
+
+p.instructions {
+  font-size: x-large;
+  color: #6300ce;
+  font-weight: bold;
+}
+
+.container {
+  text-align: center;
+}
+
+.btn {
+  background-color: #188B9A;
+  color: #000000;
+  padding: 15px 32px;
+  text-decoration: none;
+  border: 2px;
+  border-radius: 5px;
+  font-size: x-large;
+  font-weight: bolder;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#backBtn{
+  /* text-align: center; */
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 5px;
+
+}
+
+.button {
+  text-align: center;
+  background-color: #00BCD4;
+  color: #000000;
+  padding: 15px 32px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.account-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.col-form-label {
+  color: #6300ce;
+  font-weight: bold;
+}
+
+#submitBtn {
+  color: #ffffff;
+  font-size: 1.25rem;
+  background-color: #398002; 
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  width:100%
+}
+
+.font-sans {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#linkColor {
+  color: white;
+  text-decoration: none;
+}
+#linkColor:hover {
+  text-decoration: underline;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 10vw;
+  object-fit: cover;
+}

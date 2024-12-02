@@ -1,4 +1,4 @@
-let gameStarted = false;
+let gameStarted = false; // mouse pressed within border
 
 let hitCheckpoint1 = false;
 let hitCheckpoint2 = false;
@@ -18,7 +18,7 @@ let timer;
 let seconds = 0;
 let minutes = 0;
 let gameName="Trace";
-let gameInitialized=false;
+let gameInitialized=false; // Start button
 
 function preload() {
   successSound = loadSound('/finalGame/sounds/success-1-6297.mp3'); 
@@ -91,17 +91,20 @@ function draw(selectedShape) {
   fill(255, 255, 255);
   strokeWeight(6);
 
-  if (gameStarted == true) {
-    if (mouseX < 137 || 463 < mouseX || mouseY < 137 || 463 < mouseY) {
-      endGameLoss();
-      failSound.play();
-      showAlert()
-    }
-    if (163 < mouseY && mouseY < 437) {
-      if (163 < mouseX && mouseX < 437) {
+  //startbutton pressed and mouse clicked within border
+  if (gameInitialized && gameStarted) { 
+    if(checkIfWithinCanvas()) {
+      if (mouseX < 137 || 463 < mouseX || mouseY < 137 || 463 < mouseY) {
         endGameLoss();
         failSound.play();
         showAlert()
+      }
+      if (163 < mouseY && mouseY < 437) {
+        if (163 < mouseX && mouseX < 437) {
+          endGameLoss();
+          failSound.play();
+          showAlert()
+        }
       }
     }
   }
@@ -174,7 +177,12 @@ function closeAlert() {
   alertBox.style.display = "none"; // Hide the alert
 }
 
-
+function checkIfWithinCanvas(){  
+  if((mouseX >=0 && mouseX <=600) && (mouseY >= 0 && mouseY <=600))
+    return true;
+  else
+    return false;
+}
 
 
 
@@ -263,5 +271,9 @@ function formatTime(time) {
 
 function stopGame(){
   //save score
-  saveOrUpdateTopScore(gameName, score, ((minutes * 60) + seconds));    
+  resetTimer();
+  saveOrUpdateTopScore(gameName, score, ((minutes * 60) + seconds));
+  document.getElementById("startButton").disabled = false; // Enable Start button
+  gameStarted=false;
+  gameInitialized=false;
 }

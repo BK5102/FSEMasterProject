@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" type="text/css" href="home.css">
+
+  <!-- p5.js Libraries -->
+  <script src="libraries/p5.min.js"></script>
+  <script src="libraries/p5.sound.min.js"></script>
+</head> 
+
+<body class="login-bg">
+
+  <!-- Back Button -->
+  <div class="container my-3 text-left">
+    <a id='backBtn' href="home.html" class="btn btn-secondary">Back</a>
+  </div>   
+
+  <!-- Title and Form Header -->
+  <div class="container text-center">
+    <h1>Create an Account</h1>
+    <p id="form-instructions">Please enter the following:</p>
+  </div>
+
+  <!-- Form Section -->
+  <div class="container">
+    <form class="account-form">
+      <div class="form-group row">
+        <label for="firstName" class="col-sm-4 col-form-label text-right">First Name</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="firstName" placeholder="Enter first name">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="lastName" class="col-sm-4 col-form-label text-right">Last Name</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="lastName" placeholder="Enter last name">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="email" class="col-sm-4 col-form-label text-right">Email</label>
+        <div class="col-sm-6">
+          <input type="email" class="form-control" id="email" placeholder="Enter email">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="password" class="col-sm-4 col-form-label text-right">Password</label>
+        <div class="col-sm-6">
+          <input type="password" class="form-control" id="password" placeholder="Enter password">
+        </div>
+      </div>
+      <div class="text-center">
+        <a href="#" onclick="submitUserData(); return false;" id="submitBtn" class="btn btn-success">Submit</a>
+      </div>
+    </form>
+  </div>
+
+  <!-- Bootstrap JS and dependencies (optional) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="homeScreen.js"></script>
+  
+
+
+  

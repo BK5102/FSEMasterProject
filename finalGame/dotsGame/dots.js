@@ -158,6 +158,15 @@ function formatTime(time) {
 }
 
 function stopGame(){
-  //save score
-  saveOrUpdateTopScore(gameName, score, ((minutes * 60) + seconds));    
+  resetTimer();
+  saveOrUpdateTopScore(gameName, score, ((minutes * 60) + seconds));
+  document.getElementById("startButton").disabled = false; // Enable Start button 
+  gamestart=false;
+  score=0;
+  clear(); //clear canvas. p5js function
+  background(233, 217, 179); // set background colour  
+  textSize(25);
+  stroke(0, 0, 0);
+  fill(0, 0, 0);
+  text("Streak: " + score, 5, 25);
 }
